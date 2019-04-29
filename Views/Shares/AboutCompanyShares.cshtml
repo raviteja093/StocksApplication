@@ -54,6 +54,14 @@
                 <th>PreviousDayClosingPrice</th>
                 <th>Market Capitalization</th>
             </tr>
+            @if (ViewBag.IsModelEmpty == true)
+            {
+                <tr>
+                    <td colspan="5">Company quote is not found</td>
+                </tr>
+            }
+            else
+            {
             <tr>
                 <td>@Model.companyname</td>
                 <td>@Model.open</td>
@@ -61,7 +69,7 @@
                 <td>@Model.previousClose</td>
                 <td>@Model.marketCap</td>
             </tr>
-
+            }
         </table>
         <br />
         <tr></tr>

@@ -41,6 +41,12 @@ namespace StocksApplication.Controllers
         {
             inputSymbol = Convert.ToString(TempData["value"]);
             detailsOfCompany = GetCompanyQuote(inputSymbol);
+            if (detailsOfCompany.Symbol == null)
+            {
+                ViewBag.IsModelEmpty = true;
+            }
+            else
+                ViewBag.IsModelEmpty = false;
             SaveCompanyQuote(detailsOfCompany);
             return View(detailsOfCompany);
         }

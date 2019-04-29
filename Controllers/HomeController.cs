@@ -25,11 +25,21 @@ namespace StocksApplication.Controllers
             httpClient.DefaultRequestHeaders.Accept.Add(new
                 System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
         }
-        public IActionResult Index()
+        public IActionResult Index(string searchBy, string search)
         {
             List<Company> CompanyList = GetAllCompanies();
-            SaveCompanies(CompanyList);
-            return View(CompanyList);
+            SaveCompanies(CompanyList); if (searchBy == null)
+            {
+                return View(CompanyList);
+            }
+            else if (searchBy.Equals("Symbol", StringComparison.OrdinalIgnoreCase))
+            {
+                return View(CompanyList.Where(x => x.Symbol.Equals(search, StringComparison.OrdinalIgnoreCase) || search == null).ToList());
+            }
+            else
+            {
+                return View(CompanyList.Where(x => x.Name.StartsWith(search, StringComparison.OrdinalIgnoreCase) || search == null).ToList());
+            }
         }
 
         private List<Company> GetAllCompanies()

@@ -6,15 +6,37 @@
 }
 <!DOCTYPE html>
 <html>
+<head>
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+    </style>
+</head>
 <body>
-    <form action="/Profit/Index" method="post">
-        Company Symbol:
+    <div>
+        <p>
+            In-order to find out the profits of the companies for each quarter over a period of last 2 years by providing company trading symbol. For company's trading symbol check <a href="@Url.Action("Companies", "Home")" class="elements"><b><u>here</u></b></a>
+        <p>The information you can get.</p>
+        <li>Time when the dividend is declared for each quarter</li>
+        <li>Type of the dividend/profit (Income, Retained earnings, Property dividend etc.,)</li>
+        <li>Each share's dividend amount</li>
+        <li>Payment date for dividend announced</li>
+        </p>
+    </div><br />
+    <form action="/Dividends/Index" method="post">
+        <b>Company Symbol:</b>
         <br />
         <br />
         <input type="text" name="Symbol">
         <br>
         <br>
-        <input type="submit" value="GetCompanyProfits">
+        <div class="form-group">
+            <div class="col-md-offset-1">
+                <input type="submit" class="btn btn-dark" value="Get Dividend Info" />
+            </div>
+        </div>
     </form>
 </body>
 </html>

@@ -54,14 +54,22 @@
                 <th>StockExchange</th>
                 <th>OperatingSector</th>
             </tr>
-            <tr>
-                <td>@Model.CompanyName</td>
-                <td>@Model.Symbol</td>
-                <td>@Model.CEO</td>
-                <td>@Model.Exchange</td>
-                <td>@Model.Sector</td>
-            </tr>
-
+            @if (ViewBag.IsModelEmpty == true)
+            {
+                <tr>
+                    <td colspan="5">Company details are not found</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>@Model.CompanyName</td>
+                    <td>@Model.Symbol</td>
+                    <td>@Model.CEO</td>
+                    <td>@Model.Exchange</td>
+                    <td>@Model.Sector</td>
+                </tr>
+            }
         </table>
         <br />
     </div>
